@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 :root {
@@ -136,8 +137,7 @@ img {
 }
 
 .section h2,
-.contact-section h2,
-.jewellery-project h2 {
+.contact-section h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(30px, 4vw, 45px);
     font-weight: 500;
@@ -307,14 +307,15 @@ img {
     background: var(--card);
     border: 1px solid var(--border);
     overflow: hidden;
-    transition: 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .design-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     border-color: var(--accent);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 .design-card img {
@@ -322,6 +323,15 @@ img {
     aspect-ratio: 4 / 5;
     object-fit: cover;
     background: var(--light);
+    transition: transform 0.4s ease;
+}
+
+.design-card:hover img {
+    transform: scale(1.04);
+}
+
+.design-card:active {
+    transform: scale(0.98);
 }
 
 .design-card h3 {
@@ -336,22 +346,111 @@ img {
     padding: 0 17px 18px;
 }
 
-/* FASHION / JEWELLERY CAMPAIGN */
 
-.jewellery-project {
-    padding: 70px 9%;
-}
 
-.jewellery-project .design-card {
-    max-width: 520px;
-    margin-top: 30px;
-}
 
-.jewellery-project .design-card img {
+/* ADDITIONAL CAMPAIGNS */
+
+.design-project {
     width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
+    padding: 45px 9%;
+    border-top: 1px solid var(--border);
 }
+
+.design-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 55px 30px;
+    align-items: stretch;
+}
+
+.design-project-item {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.design-project-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.design-project-item > p {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    min-height: 46px;
+}
+
+.design-project-item .design-card {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.design-project-item .design-card img {
+    width: 100%;
+    height: 520px;
+    aspect-ratio: auto;
+    object-fit: contain;
+    background: var(--card);
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .design-project {
+        padding: 40px 6%;
+    }
+
+    .design-projects-grid {
+        gap: 40px 22px;
+    }
+
+    .design-project-item .design-card img {
+        height: 430px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .design-project {
+        padding: 35px 7%;
+    }
+
+    .design-projects-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .design-project-item h3 {
+        font-size: 23px;
+    }
+
+    .design-project-item > p {
+        min-height: auto;
+    }
+
+    .design-project-item .design-card img {
+        height: auto;
+        max-height: 600px;
+    }
+}
+
+
 
 /* CONTACT */
 
@@ -493,8 +592,12 @@ footer {
         flex-direction: column;
     }
 
-    .jewellery-project {
-        padding: 60px 7%;
+    .design-project {
+        padding: 35px 0;
+    }
+
+    .design-project h3 {
+        font-size: 22px;
     }
 
     .contact-section {
@@ -505,28 +608,4 @@ footer {
         flex-direction: column;
         padding: 25px 7%;
     }
-}
-
-/* CLICKABLE DESIGN HOVER EFFECT */
-
-.design-card {
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.design-card img {
-    transition: transform 0.4s ease;
-}
-
-.design-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-}
-
-.design-card:hover img {
-    transform: scale(1.04);
-}
-
-.design-card:active {
-    transform: scale(0.98);
 }
